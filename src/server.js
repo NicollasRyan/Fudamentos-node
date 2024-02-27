@@ -31,5 +31,3 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(3333);
-
-// git commit -m "Conhecendo HTTP status codes"
