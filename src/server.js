@@ -24,10 +24,12 @@ const server = http.createServer((req, res) => {
       email: "jonh@gmail.com",
     });
 
-    return res.end("Criação de usuario");
+    return res.writeHead(201).end();
   }
 
-  return res.end("Hello World");
+  return res.writeHead(404).end();
 });
 
 server.listen(3333);
+
+// git commit -m "Conhecendo HTTP status codes"
