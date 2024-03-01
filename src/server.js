@@ -1,6 +1,7 @@
 import http from "node:http";
 import { json } from "./middlewares/json.js";
 import { routes } from "./routes.js";
+import { extractQuertParams } from "./utils/extract-query-params.js";
 
 // GET => buscar um recurso no back-end
 // POST => cria um recurso no back-end
@@ -19,6 +20,11 @@ const server = http.createServer(async (req, res) => {
 
   if (route) {
     const routeParams = req.url.match(route.path);
+
+    const { query, ...params } = routeParams.groups;
+
+    req.params = params;
+    req.query = query ? extractQuertParams(query) : {};
 
     req.params = { ...routeParams.groups };
 
