@@ -27,6 +27,7 @@ export const routes = [
       };
 
       database.insert("users", user);
+
       return res.writeHead(201).end();
     },
   },
